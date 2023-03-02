@@ -29,8 +29,6 @@ export const ProductsList = () => {
   useEffect(() => {
     fetchProducts()
 
-    console.log(products);
-
   }, [refresh]);
 
   return (
@@ -39,7 +37,7 @@ export const ProductsList = () => {
         rows={products as Product[]}
         columns={columns}
         pageSize={6}
-        rowsPerPageOptions={[5]}
+        rowsPerPageOptions={[6]}
       />
       <AddProductModal setRefresh={setRefresh} refresh={refresh}/>
     </div>
