@@ -3,6 +3,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { getMyProducts } from "../../utils/firebaseInit";
 import { Product } from "../../dto/product";
+import { AddProductModal } from "../addProductModal";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -44,24 +45,21 @@ export const ProductsList = () => {
       if (dbProducts instanceof Error == false) {
         setProducts(dbProducts);
       }
+      
     }
     getProducts();
   }, []);
 
   return (
-    <div className="h-screen">
+    <div className="h-5/6 my-5">
       <DataGrid
         rows={products as Product[]}
         columns={columns}
         pageSize={6}
         rowsPerPageOptions={[5]}
-        checkboxSelection
-        initialState={{
-          sorting: {
-            sortModel: [{ field: "id", sort: "asc" }],
-          },
-        }}
       />
+      <AddProductModal />
     </div>
   );
 };
+
