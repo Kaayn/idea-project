@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { ProductForm } from '../productForm';
+import { Dispatch, SetStateAction } from 'react';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -17,8 +18,14 @@ const style = {
   p: 4,
 };
 
-export const AddProductModal = () => {
+type ProductModalProps = {
+  setRefresh: Dispatch<SetStateAction<boolean>>
+  refresh: boolean
+}
+
+export const AddProductModal = ({setRefresh, refresh}: ProductModalProps) => {
   const [open, setOpen] = React.useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -34,7 +41,7 @@ export const AddProductModal = () => {
         aria-describedby="modal-modal-description"
       >
         <div className="flex text-black justify-evenly justify-center m-auto bg-white w-96 border-solid border-2 border-black shadow-xl h-auto">
-          <ProductForm />
+          <ProductForm setRefresh={setRefresh} refresh={refresh} setOpenModal={setOpen}/>
         </div>
       </Modal>
     </div>
