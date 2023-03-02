@@ -21,3 +21,8 @@ Run backoffice app :
 ```
 pnpm dev
 ```
+
+## login in bo
+
+username: admin@test.fr
+pwd: admin1
