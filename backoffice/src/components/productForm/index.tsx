@@ -1,10 +1,17 @@
+import { Dispatch, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import uuid from "react-uuid";
 import { Product } from "../../dto/product";
 import { addProduct } from "../../utils/firebaseInit";
 
-export const ProductForm = () => {
+type ProductFormProps = {
+    setRefresh: Dispatch<SetStateAction<boolean>>
+    refresh: boolean
+    setOpenModal: Dispatch<SetStateAction<boolean>>
+}
+
+export const ProductForm = ({setRefresh, refresh, setOpenModal}: ProductFormProps, ) => {
     
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -24,6 +31,8 @@ export const ProductForm = () => {
     }
     
     await addProduct(input);
+
+    setOpenModal(false)
     
   };
       
@@ -37,8 +46,8 @@ export const ProductForm = () => {
       <input placeholder="Hauteur" {...register("height", { required: true })} />
       <input placeholder="Url de l'image" {...register("imgUrl", { required: true })} />
 
-      {(errors.name || errors.description || errors.price || errors.length || errors.width || errors.height || errors.imgUrl) && <span>This field is required</span>}
-      <input className="bg-red" type="submit" />
+      {(errors.name || errors.description || errors.price || errors.length || errors.width || errors.height || errors.imgUrl) && <span>missing field(s)</span>}
+      <input className="bg-red" type="submit" onClick={() => setRefresh(!refresh)}/>
 
     </form>
   );

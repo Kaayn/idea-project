@@ -3,7 +3,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, User } from "firebase/auth";
 import { getFirestore, collection, getDocs, setDoc, doc } from "firebase/firestore";
-import { Product, ProductInput } from "../dto/product";
+import { Product } from "../dto/product";
 import uuid from "react-uuid"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -67,7 +67,7 @@ export const getMyProducts = async (): Promise<Product[] | Error> => {
   return querySnapshot
 }
 
-export const addProduct = async (input: ProductInput): Promise<void | Error> => {
+export const addProduct = async (input: Product): Promise<void | Error> => {
   // Add a new document in collection "cities"
 
   const product = await setDoc(doc(store, "Tables", input.id), input)

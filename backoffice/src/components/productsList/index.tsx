@@ -8,47 +8,30 @@ import { AddProductModal } from "../addProductModal";
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "name", headerName: "NOM", width: 130 },
-  {
-    field: "description",
-    headerName: "DESCRIPTION",
-    type: "number",
-    width: 400,
-  },
-  { field: "length", headerName: "LONGUEUR", type: "number", width: 90 },
-  { field: "width", headerName: "LARGEUR", type: "number", width: 90 },
-  {
-    field: "height",
-    headerName: "HAUTEUR",
-    type: "number",
-    width: 90,
-  },
-  {
-    field: "price",
-    headerName: "PRICE",
-    type: "number",
-    width: 90,
-  },
-  {
-    field: "imgUrl",
-    headerName: "IMAGE",
-    width: 130,
-  },
+  { field: "description", headerName: "DESCRIPTION", width: 400 },
+  { field: "length", headerName: "LONGUEUR", width: 90 },
+  { field: "width", headerName: "LARGEUR", width: 90 },
+  { field: "height", headerName: "HAUTEUR", width: 90 },
+  { field: "price", headerName: "PRICE", width: 90 },
+  { field: "imgUrl", headerName: "IMAGE", width: 130 },
 ];
 
 export const ProductsList = () => {
   const [products, setProducts] = useState<Product[] | Error>([]);
+  const [refresh, setRefresh] = useState(false)
+
+  const fetchProducts =  async () => {
+    const dbProducts = await getMyProducts();
+
+    setProducts(dbProducts) 
+  }
 
   useEffect(() => {
-    async function getProducts() {
-      const dbProducts = await getMyProducts();
+    fetchProducts()
 
-      if (dbProducts instanceof Error == false) {
-        setProducts(dbProducts);
-      }
-      
-    }
-    getProducts();
-  }, []);
+    console.log(products);
+
+  }, [refresh]);
 
   return (
     <div className="h-5/6 my-5">
@@ -58,8 +41,7 @@ export const ProductsList = () => {
         pageSize={6}
         rowsPerPageOptions={[5]}
       />
-      <AddProductModal />
+      <AddProductModal setRefresh={setRefresh} refresh={refresh}/>
     </div>
   );
 };
-
