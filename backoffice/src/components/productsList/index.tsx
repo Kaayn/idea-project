@@ -18,17 +18,16 @@ const columns: GridColDef[] = [
 
 export const ProductsList = () => {
   const [products, setProducts] = useState<Product[] | Error>([]);
-  const [refresh, setRefresh] = useState(false)
+  const [refresh, setRefresh] = useState(false);
 
-  const fetchProducts =  async () => {
+  const fetchProducts = async () => {
     const dbProducts = await getMyProducts();
 
-    setProducts(dbProducts) 
-  }
+    setProducts(dbProducts);
+  };
 
   useEffect(() => {
-    fetchProducts()
-
+    fetchProducts();
   }, [refresh]);
 
   return (
@@ -39,7 +38,7 @@ export const ProductsList = () => {
         pageSize={6}
         rowsPerPageOptions={[6]}
       />
-      <AddProductModal setRefresh={setRefresh} refresh={refresh}/>
+      <AddProductModal setRefresh={setRefresh} refresh={refresh} />
     </div>
   );
 };
