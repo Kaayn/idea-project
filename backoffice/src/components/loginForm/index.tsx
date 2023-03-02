@@ -1,14 +1,19 @@
 import { useForm } from "react-hook-form";
 import { login } from "../../utils/firebaseInit"
-
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
     
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = async (data: any) => await login(data.Email, data.Password);
+  const onSubmit = async (data: any) => {
+    const user = await login(data.Email, data.Password);
     
-
+    if ("accessToken" in user) navigate("/home")
+  };
+    
+  const navigate = useNavigate();
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input placeholder="Email" {...register("Email", { required: true})} />    

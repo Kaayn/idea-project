@@ -2,7 +2,8 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, User } from "firebase/auth";
-import { useReducer } from "react";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { Product } from "../dto/product";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -40,4 +41,29 @@ export const login = async (email: string, password: string): Promise<User | Err
   return login
 }
 
+const store = getFirestore(app);
+
+export const getMyProducts = async (): Promise<Product[] | Error> => {
+  const querySnapshot = await getDocs(collection(store, "Tables"))
+  .then((products) => {
+    let finalProducts: Product[] = [];
+    products.forEach((doc) => {
+
+      const data = doc.data() as Product;
+
+      finalProducts.push(data)
+      
+    });
+    
+    return finalProducts
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    return new Error(`${errorCode} : ${errorMessage}`)
+  });
+
+  return querySnapshot
+}
 
