@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { AuthDataContext } from "../../App";
 import { ProductsList } from "../../components/productsList";
 import { useNavigate } from "react-router";
+import { HomeHeader } from "../../components/homeHeader";
 
 export const HomePage = () => {
   const { data } = useContext(AuthDataContext);

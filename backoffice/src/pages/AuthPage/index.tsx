@@ -3,7 +3,7 @@ import { LoginForm } from "../../components/loginForm";
 
 export const AuthPage = () => {
   return (
-    <div>
+    <div className="flex items-center">
       <LoginForm />
     </div>
   );

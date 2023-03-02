@@ -42,36 +42,45 @@ export const ProductForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input placeholder="Nom" {...register("name", { required: true })} />
+    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 p-1" >
       <input
+        placeholder="Nom"
+        {...register("name", { required: true })}
+        className="m-2 bg-white border-2 border-black rounded-md text-black"
+      />
+      <input
+        className="m-2 bg-white border-2 border-black rounded-md text-black"
         placeholder="Description"
         {...register("description", { required: true })}
       />
-      <input placeholder="Prix" {...register("price", { required: true })} />
       <input
+        className="m-2 bg-white border-2 border-black rounded-md text-black"
+        placeholder="Prix"
+        {...register("price", { required: true })}
+      />
+      <input
+        className="m-2 bg-white border-2 border-black rounded-md text-black"
         placeholder="Longueur"
         {...register("length", { required: true })}
       />
-      <input placeholder="Largeur" {...register("width", { required: true })} />
       <input
+        className="m-2 bg-white border-2 border-black rounded-md text-black"
+        placeholder="Largeur"
+        {...register("width", { required: true })}
+      />
+      <input
+        className="m-2 bg-white border-2 border-black rounded-md text-black"
         placeholder="Hauteur"
         {...register("height", { required: true })}
       />
       <input
+        className="m-2 bg-white border-2 border-black rounded-md text-black"
         placeholder="Url de l'image"
         {...register("imgUrl", { required: true })}
       />
 
-      {(errors.name ||
-        errors.description ||
-        errors.price ||
-        errors.length ||
-        errors.width ||
-        errors.height ||
-        errors.imgUrl) && <span>missing field(s)</span>}
       <input
-        className="bg-red"
+        className="bg-red-500 rounded-lg m-1.5"
         type="submit"
         onClick={() => setRefresh(!refresh)}
       />

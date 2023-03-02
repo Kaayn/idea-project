@@ -29,16 +29,23 @@ export const LoginForm = () => {
   const navigate = useNavigate();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input placeholder="Email" {...register("Email", { required: true })} />
-      <input
-        placeholder="Password"
-        type={"password"}
-        {...register("Password", { required: true })}
-      />
-      {(errors.Password || errors.Email) && <span>This field is required</span>}
+    <div >
+      <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-col">
+        <input 
+          className="bg-white border-2 border-black rounded-md my-1 text-black" 
+          placeholder="Email" {...register("Email", { required: true })} />
+        <input
+          className="bg-white border-2 border-black rounded-md my-1 text-black"
+          placeholder="Password"
+          type={"password"}
+          {...register("Password", { required: true })}
+        />
+        {(errors.Password || errors.Email) && (
+          <span>missing email or password</span>
+        )}
 
-      <input type="submit" />
-    </form>
+        <input className="bg-red-500 rounded-lg my-1" type="submit" />
+      </form>
+    </div>
   );
 };

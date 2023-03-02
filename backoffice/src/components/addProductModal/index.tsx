@@ -31,7 +31,7 @@ export const AddProductModal = ({ setRefresh, refresh }: ProductModalProps) => {
 
   return (
     <div>
-      <Button onClick={handleOpen} variant="contained">
+      <Button onClick={handleOpen} variant="contained" sx={{backgroundColor: "red", fontSize: 20}}>
         + Add
       </Button>
       <Modal
@@ -40,7 +40,7 @@ export const AddProductModal = ({ setRefresh, refresh }: ProductModalProps) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="flex text-black justify-evenly justify-center m-auto bg-white w-96 border-solid border-2 border-black shadow-xl h-auto">
+        <div className="flex text-black my-32 m-auto bg-white w-96 border-solid border-2 border-black shadow-xl h-auto">
           <ProductForm
             setRefresh={setRefresh}
             refresh={refresh}
