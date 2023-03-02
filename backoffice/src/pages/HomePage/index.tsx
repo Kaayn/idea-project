@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 
 export const HomePage = () => {
   const { data } = useContext(AuthDataContext);
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {

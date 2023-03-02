@@ -2,22 +2,20 @@ import { User } from "firebase/auth";
 import { createContext, Dispatch, useReducer } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthPage } from "./pages/AuthPage";
-import { HomePage } from "./pages/HomePage"
+import { HomePage } from "./pages/HomePage";
 
 type AuthDataType = {
   user: User | null;
-
 };
 
 export enum ContextAction {
-  setUser
+  setUser,
 }
 
-type Action =
-  | {
-      type: ContextAction.setUser;
-      newValue: User;
-    };
+type Action = {
+  type: ContextAction.setUser;
+  newValue: User;
+};
 
 type ContextType = {
   data: AuthDataType;
@@ -25,7 +23,7 @@ type ContextType = {
 };
 
 const defaultReducerValues: AuthDataType = {
-  user: null
+  user: null,
 };
 
 const defaultContextValues = {
@@ -33,8 +31,7 @@ const defaultContextValues = {
   dispatchData: () => null,
 };
 
-export const AuthDataContext =
-  createContext<ContextType>(defaultContextValues);
+export const AuthDataContext = createContext<ContextType>(defaultContextValues);
 
 const reducer = (state: AuthDataType, action: Action) => {
   switch (action.type) {
@@ -47,7 +44,6 @@ const reducer = (state: AuthDataType, action: Action) => {
 };
 
 export const App = () => {
-
   const [data, dispatchData] = useReducer(reducer, defaultReducerValues);
 
   const contextValues = {
