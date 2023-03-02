@@ -7,7 +7,7 @@ import { AddProductModal } from "../addProductModal";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "name", headerName: "NOM", width: 130 },
+  { field: "name", headerName: "NOM", width: 210 },
   { field: "description", headerName: "DESCRIPTION", width: 400 },
   { field: "length", headerName: "LONGUEUR", width: 90 },
   { field: "width", headerName: "LARGEUR", width: 90 },
