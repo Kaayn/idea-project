@@ -9,7 +9,7 @@ type CardProps = {
 
 const Card = ({ product }: CardProps) => {
   const { dispatchCart } = useContext(CartContext);
-  const { products, setProducts } = useContext(ProductsContext);
+  const { setorderedProducts } = useContext(ProductsContext);
   const { toggle } = useContext(ModalContext);
 
   const handleProductClick = () => {
@@ -25,6 +25,21 @@ const Card = ({ product }: CardProps) => {
       img: product.imgUrl,
       price: product.price,
     });
+
+    setorderedProducts((prev) => [
+      ...prev,
+      {
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        imgUrl: product.imgUrl,
+        price: product.price,
+        height: product.height,
+        width: product.width,
+        length: product.length,
+      },
+    ]);
+
     // Open Modal
 
     toggle("Product");

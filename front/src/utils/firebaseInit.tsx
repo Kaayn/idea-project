@@ -1,8 +1,15 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  setDoc,
+  doc,
+} from "firebase/firestore";
 import { Product } from "../context/product";
+import { Order } from "../dto/dto";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -52,4 +59,22 @@ export const getMyProducts = async (): Promise<Product[] | Error> => {
     });
 
   return querySnapshot;
+};
+
+export const addOrder = async (input: Order): Promise<void | Error> => {
+  // Add a new Order in collection "Orders"
+
+  const order = await setDoc(doc(store, "Orders", input.id), input)
+    .then((reference) => {
+      console.log(input.id);
+
+      return reference;
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      return new Error(`${errorCode} : ${errorMessage}`);
+    });
+  return order;
 };

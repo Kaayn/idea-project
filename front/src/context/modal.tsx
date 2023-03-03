@@ -15,6 +15,8 @@ export interface ModalContextType {
   setIsCartOpen: Dispatch<SetStateAction<boolean>>;
   isProductOpen: boolean;
   setIsProductOpen: Dispatch<SetStateAction<boolean>>;
+  isOrderOpen: boolean;
+  setIsOrderOpen: Dispatch<SetStateAction<boolean>>;
   toggle: (type: string) => void;
 }
 
@@ -23,6 +25,8 @@ const defaultContextValue: ModalContextType = {
   setIsCartOpen: () => null,
   isProductOpen: false,
   setIsProductOpen: () => null,
+  isOrderOpen: false,
+  setIsOrderOpen: () => null,
   toggle: () => null,
 };
 
@@ -36,6 +40,9 @@ export const ModalContextProvider = (props: ModalContextProviderProps) => {
   const [isProductOpen, setIsProductOpen] = useState(
     defaultContextValue.isProductOpen
   );
+  const [isOrderOpen, setIsOrderOpen] = useState(
+    defaultContextValue.isOrderOpen
+  );
 
   const toggle = (type: string) => {
     switch (type) {
@@ -44,6 +51,9 @@ export const ModalContextProvider = (props: ModalContextProviderProps) => {
         break;
       case "Product":
         setIsProductOpen(!isProductOpen);
+        break;
+      case "Order":
+        setIsOrderOpen(!isOrderOpen);
         break;
       default:
         throw new Error();
@@ -55,6 +65,8 @@ export const ModalContextProvider = (props: ModalContextProviderProps) => {
     setIsCartOpen,
     isProductOpen,
     setIsProductOpen,
+    isOrderOpen,
+    setIsOrderOpen,
     toggle,
   };
 
