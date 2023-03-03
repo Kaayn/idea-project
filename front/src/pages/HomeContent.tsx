@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import Header from "../components/Header";
+import Header from "../components/header";
 import ProductList from "../components/ProductList";
 import { ProductsContext } from "../context/product";
 import CartModal from "../components/CartModal";
