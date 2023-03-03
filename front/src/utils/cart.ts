@@ -1,4 +1,5 @@
 import { CartItem } from "../context/cart";
+import { Product } from "../context/product";
 
 export type CreateCartItem = CartItem 
 
@@ -16,3 +17,8 @@ export const createCartItem = (item: CreateCartItem): CartItem => ({
     
     return hasSameProduct;
   };
+
+  export const getTotalPrice = (products:Product[]) => {
+    const totalPrice = products.reduce((acc,currentProduct)=>acc+currentProduct.price,0)
+    return totalPrice
+  }

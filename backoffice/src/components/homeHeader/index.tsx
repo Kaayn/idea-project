@@ -1,24 +1,28 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
+import { Link } from "react-router-dom";
 
 export const HomeHeader = () => {
   return (
-    <div className="w-screen fixed pb-2.5">
+    <div className="w-screen fixed pb-2.5 left-0">
       <AppBar position="static">
-        <Toolbar variant="dense">
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          ></IconButton>
-          <Typography variant="h6" color="inherit" component="div">
-            Photos
-          </Typography>
+        <Toolbar
+          variant="dense"
+          className="bg-red-500 flex justify-center h-16"
+        >
+          <Link
+            className="mx-40 font-bold text-3xl hover:text-gray-700"
+            to="/orders"
+          >
+            COMMANDES
+          </Link>
+          <Link
+            className="mx-40 font-bold text-3xl hover:text-gray-700"
+            to="/products"
+          >
+            PRODUITS
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

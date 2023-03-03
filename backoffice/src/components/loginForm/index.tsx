@@ -22,18 +22,20 @@ export const LoginForm = () => {
         type: ContextAction.setUser,
         newValue: user as User,
       });
-      navigate("/home");
+      navigate("/orders");
     }
   };
 
   const navigate = useNavigate();
 
   return (
-    <div >
+    <div>
       <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-col">
-        <input 
-          className="bg-white border-2 border-black rounded-md my-1 text-black" 
-          placeholder="Email" {...register("Email", { required: true })} />
+        <input
+          className="bg-white border-2 border-black rounded-md my-1 text-black"
+          placeholder="Email"
+          {...register("Email", { required: true })}
+        />
         <input
           className="bg-white border-2 border-black rounded-md my-1 text-black"
           placeholder="Password"

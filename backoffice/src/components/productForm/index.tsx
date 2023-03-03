@@ -42,7 +42,7 @@ export const ProductForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 p-1" >
+    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 p-1">
       <input
         placeholder="Nom"
         {...register("name", { required: true })}

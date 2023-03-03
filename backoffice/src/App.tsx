@@ -2,7 +2,8 @@ import { User } from "firebase/auth";
 import { createContext, Dispatch, useReducer } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthPage } from "./pages/AuthPage";
-import { HomePage } from "./pages/HomePage";
+import { OrdersPage } from "./pages/OrdersPage";
+import { ProductsPage } from "./pages/ProductsPage";
 
 type AuthDataType = {
   user: User | null;
@@ -56,7 +57,8 @@ export const App = () => {
       <AuthDataContext.Provider value={contextValues}>
         <Routes>
           <Route path="/" element={<AuthPage />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/orders" element={<OrdersPage />} />
+          <Route path="/products" element={<ProductsPage />} />
         </Routes>
       </AuthDataContext.Provider>
     </BrowserRouter>

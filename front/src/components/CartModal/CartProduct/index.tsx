@@ -2,6 +2,7 @@ import Modal from "../../Modal";
 import { useContext } from "react";
 import trash from "../../../assets/Trash.svg";
 import { CartAction, CartContext, CartItem } from "../../../context/cart";
+import { ProductsContext } from "../../../context/product";
 
 type CartItemProps = {
   cartItem: CartItem;
@@ -9,11 +10,13 @@ type CartItemProps = {
 
 const CartProduct = ({ cartItem }: CartItemProps) => {
   const { dispatchCart } = useContext(CartContext);
+  const { setorderedProducts } = useContext(ProductsContext);
 
   // img du produit a droite / prix du produit a gauche aligner au top / en bas a droite supprimer le produit
 
   const handleRemoveClick = () => {
     dispatchCart({ type: CartAction.RemoveFromCart, cartItemId: cartItem.id });
+    setorderedProducts([]);
   };
   return (
     <div>
