@@ -4,7 +4,7 @@ export type CreateCartItem = CartItem
 
 export const createCartItem = (item: CreateCartItem): CartItem => ({
     id: `id-${new Date().getTime()}`,
-    title: item.title,
+    name: item.name,
     img: item.img,
     // quantity: item.quantity || 1,
     price: item.price,
