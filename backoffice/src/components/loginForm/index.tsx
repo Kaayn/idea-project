@@ -22,7 +22,7 @@ export const LoginForm = () => {
         type: ContextAction.setUser,
         newValue: user as User,
       });
-      navigate("/home");
+      navigate("/orders");
     }
   };
 

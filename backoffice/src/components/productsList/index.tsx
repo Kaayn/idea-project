@@ -31,12 +31,12 @@ export const ProductsList = () => {
   }, [refresh]);
 
   return (
-    <div className="h-5/6 my-5">
+    <div className="h-5/6 my-5 pt-16">
       <DataGrid
         rows={products as Product[]}
         columns={columns}
-        pageSize={6}
-        rowsPerPageOptions={[6]}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
       />
       <AddProductModal setRefresh={setRefresh} refresh={refresh} />
     </div>
