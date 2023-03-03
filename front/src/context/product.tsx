@@ -19,11 +19,15 @@ export type Product = {
 export interface ProductsContextType {
   products: Product[] | Error;
   setProducts: Dispatch<SetStateAction<Product[] | Error>>;
+  orderedProducts: Product[];
+  setorderedProducts: Dispatch<SetStateAction<Product[]>>;
 }
 
 const defaultContextValue: ProductsContextType = {
   products: [],
   setProducts: () => null,
+  orderedProducts: [],
+  setorderedProducts: () => null,
 };
 
 export const ProductsContext =
@@ -37,10 +41,14 @@ export const ProductsContextProvider = (
   const [products, setProducts] = useState<Product[] | Error>(
     defaultContextValue.products
   );
-
+  const [orderedProducts, setorderedProducts] = useState<Product[]>(
+    defaultContextValue.orderedProducts
+  );
   const ProductsContextValue: ProductsContextType = {
     products,
     setProducts,
+    orderedProducts,
+    setorderedProducts,
   };
 
   return (

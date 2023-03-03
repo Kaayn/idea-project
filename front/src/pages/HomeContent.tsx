@@ -1,17 +1,10 @@
 import { useContext, useEffect } from "react";
 import Header from "../components/Header";
 import ProductList from "../components/ProductList";
-import { CartContext, CartContextProvider } from "../context/cart";
-import {
-  ProductsContextProvider,
-  ProductsContext,
-  Product,
-} from "../context/product";
-// import "./home.style.css";
-import mock from "../utils/mock.json";
+import { ProductsContext } from "../context/product";
 import CartModal from "../components/CartModal";
-import ProductModal from "../components/ProductModal";
 import { getMyProducts } from "../utils/firebaseInit";
+import OrderModal from "../components/OrderModal";
 
 const HomeContent = () => {
   //TODO: fetch data and store it
@@ -31,6 +24,7 @@ const HomeContent = () => {
       <Header />
       <ProductList products={products} />
       <CartModal />
+      <OrderModal />
       {/* <ProductModal product={} /> */}
     </>
   );
