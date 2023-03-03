@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import { Product } from "../dto/product";
 import uuid from "react-uuid";
+import { Order } from "../dto/orders";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
@@ -64,6 +65,28 @@ export const getMyProducts = async (): Promise<Product[] | Error> => {
       });
 
       return finalProducts;
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      return new Error(`${errorCode} : ${errorMessage}`);
+    });
+
+  return querySnapshot;
+};
+
+export const getMyOrders = async (): Promise<Order[] | Error> => {
+  const querySnapshot = await getDocs(collection(store, "Orders"))
+    .then((orders) => {
+      let finalOrders: Order[] = [];
+      orders.forEach((doc) => {
+        const data = doc.data() as Order;
+
+        finalOrders.push(data);
+      });
+
+      return finalOrders;
     })
     .catch((error) => {
       const errorCode = error.code;
