@@ -3,6 +3,7 @@ import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { getMyOrders, getMyProducts } from "../../utils/firebaseInit";
 import { Order } from "../../dto/orders";
+import { Button } from "@mui/material";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -35,6 +36,13 @@ export const OrdersList = () => {
         pageSize={10}
         rowsPerPageOptions={[10]}
       />
+      <Button
+        onClick={() => setRefresh(!refresh)}
+        variant="contained"
+        sx={{ backgroundColor: "red", fontSize: 20 }}
+      >
+        Actualiser
+      </Button>{" "}
     </div>
   );
 };

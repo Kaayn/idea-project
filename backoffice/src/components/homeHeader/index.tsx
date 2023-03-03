@@ -11,10 +11,16 @@ export const HomeHeader = () => {
           variant="dense"
           className="bg-red-500 flex justify-center h-16"
         >
-          <Link className="mx-40 font-bold text-3xl hover:text-gray-700" to="/orders">
+          <Link
+            className="mx-40 font-bold text-3xl hover:text-gray-700"
+            to="/orders"
+          >
             COMMANDES
           </Link>
-          <Link className="mx-40 font-bold text-3xl hover:text-gray-700" to="/products">
+          <Link
+            className="mx-40 font-bold text-3xl hover:text-gray-700"
+            to="/products"
+          >
             PRODUITS
           </Link>
         </Toolbar>
